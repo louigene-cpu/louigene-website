@@ -87,7 +87,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 1.7rem;
   letter-spacing: 0.05em;
 }
-.nav__logo span { color: var(--gold); }
+.nav__logo span { color: var(--gold); margin-left: -0.32em; }
 .nav__logo-mark { height: 30px; width: auto; display: block; }
 .nav__links { display: flex; align-items: center; gap: clamp(1rem, 3vw, 2.2rem); }
 .nav__links a { font-family: "Space Grotesk", sans-serif; font-weight: 500; font-size: 0.95rem; color: var(--muted); transition: color 0.15s; }
