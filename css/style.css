@@ -79,12 +79,16 @@ a { color: inherit; text-decoration: none; }
   border-bottom: 1px solid var(--line);
 }
 .nav__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
   font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
 }
 .nav__logo span { color: var(--gold); }
+.nav__logo-mark { height: 30px; width: auto; display: block; }
 .nav__links { display: flex; align-items: center; gap: clamp(1rem, 3vw, 2.2rem); }
 .nav__links a { font-family: "Space Grotesk", sans-serif; font-weight: 500; font-size: 0.95rem; color: var(--muted); transition: color 0.15s; }
 .nav__links a:hover { color: var(--cream); }
@@ -119,6 +123,12 @@ a { color: inherit; text-decoration: none; }
   grid-template-columns: 1.1fr 0.9fr;
   gap: clamp(2rem, 5vw, 4rem);
   align-items: center;
+}
+.hero__logo {
+  height: clamp(72px, 11vw, 118px);
+  width: auto;
+  margin-bottom: 1.4rem;
+  filter: drop-shadow(0 8px 30px rgba(0, 0, 0, 0.5));
 }
 .hero__name {
   font-family: "Space Grotesk", sans-serif;
