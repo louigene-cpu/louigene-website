@@ -1,0 +1,105 @@
+/* ============================================================
+   louigene. — site config + behavior
+   ------------------------------------------------------------
+   👉 EDIT YOUR LINKS HERE. This is the only place you need to
+      change. Paste your real URLs between the quotes. Set a
+      link to "" (empty) to hide that button automatically.
+   ============================================================ */
+
+const CONFIG = {
+  // --- Streaming ---
+  appleMusic: "https://music.apple.com/us/artist/louigene/1773989164",
+  spotifyArtist: "",   // e.g. "https://open.spotify.com/artist/XXXXXXXX"
+  // For the embedded Spotify player, paste your artist embed id (the part
+  // after /artist/). Leave "" to hide the Spotify player entirely.
+  spotifyEmbedId: "",  // e.g. "3TVXtAsR1Inumwj472S9r4"
+
+  // --- Social ---
+  instagram: "https://instagram.com/",   // 👈 paste your @handle URL
+  youtube:   "",                          // e.g. "https://youtube.com/@louigene"
+  tiktok:    "",                          // e.g. "https://tiktok.com/@louigene"
+};
+
+/* ------------------------------------------------------------
+   Below this line you normally don't need to touch anything.
+   ------------------------------------------------------------ */
+
+const ICONS = {
+  instagram: '<svg class="social__icon" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.07 1.17.05 1.8.25 2.23.42.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.42.37 1.06.42 2.23.06 1.2.07 1.6.07 4.8s0 3.6-.07 4.8c-.05 1.17-.25 1.8-.42 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.17-1.06.37-2.23.42-1.2.06-1.6.07-4.8.07s-3.6 0-4.8-.07c-1.17-.05-1.8-.25-2.23-.42a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.17-.42-.37-1.06-.42-2.23C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.8c.05-1.17.25-1.8.42-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.17 1.06-.37 2.23-.42C8.4 2.2 8.8 2.2 12 2.2zm0 1.62c-3.14 0-3.5.01-4.74.07-.9.04-1.38.19-1.7.32-.43.16-.74.36-1.06.68-.32.32-.52.63-.68 1.06-.13.32-.28.8-.32 1.7-.06 1.24-.07 1.6-.07 4.74s.01 3.5.07 4.74c.04.9.19 1.38.32 1.7.16.43.36.74.68 1.06.32.32.63.52 1.06.68.32.13.8.28 1.7.32 1.24.06 1.6.07 4.74.07s3.5-.01 4.74-.07c.9-.04 1.38-.19 1.7-.32.43-.16.74-.36 1.06-.68.32-.32.52-.63.68-1.06.13-.32.28-.8.32-1.7.06-1.24.07-1.6.07-4.74s-.01-3.5-.07-4.74c-.04-.9-.19-1.38-.32-1.7a2.9 2.9 0 0 0-.68-1.06 2.9 2.9 0 0 0-1.06-.68c-.32-.13-.8-.28-1.7-.32-1.24-.06-1.6-.07-4.74-.07zm0 2.76a5.42 5.42 0 1 1 0 10.84 5.42 5.42 0 0 1 0-10.84zm0 8.94a3.52 3.52 0 1 0 0-7.04 3.52 3.52 0 0 0 0 7.04zm5.63-9.13a1.27 1.27 0 1 1-2.54 0 1.27 1.27 0 0 1 2.54 0z"/></svg>',
+  spotify: '<svg class="social__icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.59 14.44a.62.62 0 0 1-.86.21c-2.35-1.44-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.82-.87 7.1-.5 9.72 1.1.3.18.4.57.21.87zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.5c3.63-1.1 8.15-.56 11.24 1.34.37.23.49.71.25 1.07zm.11-2.84C14.8 8.96 9.34 8.78 6.26 9.71a.94.94 0 1 1-.54-1.8c3.54-1.07 9.57-.86 13.34 1.38a.94.94 0 0 1-.96 1.61z"/></svg>',
+  appleMusic: '<svg class="social__icon" viewBox="0 0 24 24"><path d="M17.2 3.2 8.9 4.9c-.5.1-.8.5-.8 1v9.4a3 3 0 1 0 1.5 2.6V8.3l6.9-1.4v6.2a3 3 0 1 0 1.5 2.6V4.2c0-.7-.6-1.2-1.3-1z"/></svg>',
+  youtube: '<svg class="social__icon" viewBox="0 0 24 24"><path d="M23 7.5a3 3 0 0 0-2.1-2.1C19 4.9 12 4.9 12 4.9s-7 0-8.9.5A3 3 0 0 0 1 7.5 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.5a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.5 12 31 31 0 0 0 23 7.5zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg>',
+  tiktok: '<svg class="social__icon" viewBox="0 0 24 24"><path d="M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3.3v12.1a2.4 2.4 0 1 1-2.4-2.4c.24 0 .47.03.7.1v-3.4a5.8 5.8 0 1 0 5 5.7V9.3a7.5 7.5 0 0 0 4.4 1.4V7.3a4.3 4.3 0 0 1-3.4-1.5z"/></svg>',
+};
+
+/* ----- Build social buttons ----- */
+const SOCIAL_ORDER = [
+  { key: "instagram",  label: "Instagram",   sub: "Follow @louigene." },
+  { key: "spotify",    label: "Spotify",     sub: "Stream & save",     url: "spotifyArtist" },
+  { key: "appleMusic", label: "Apple Music", sub: "Full catalog",      url: "appleMusic" },
+  { key: "youtube",    label: "YouTube",     sub: "Watch & subscribe" },
+  { key: "tiktok",     label: "TikTok",      sub: "Behind the music" },
+];
+
+function buildSocials() {
+  const wrap = document.getElementById("socials");
+  if (!wrap) return;
+  SOCIAL_ORDER.forEach((s) => {
+    const url = CONFIG[s.url || s.key];
+    if (!url) return; // hide if no link set
+    const a = document.createElement("a");
+    a.className = "social";
+    a.href = url;
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.innerHTML = `${ICONS[s.key] || ""}<span class="social__meta">${s.label}<small>${s.sub}</small></span>`;
+    wrap.appendChild(a);
+  });
+}
+
+/* ----- Spotify player + catalog link ----- */
+function buildSpotify() {
+  if (CONFIG.spotifyEmbedId) {
+    const wrap = document.getElementById("spotify-wrap");
+    const frame = document.getElementById("spotify-embed");
+    frame.src = `https://open.spotify.com/embed/artist/${CONFIG.spotifyEmbedId}?utm_source=generator&theme=0`;
+    wrap.hidden = false;
+  }
+  if (CONFIG.spotifyArtist) {
+    const link = document.querySelector('[data-link="spotify"]');
+    if (link) { link.href = CONFIG.spotifyArtist; link.hidden = false; }
+  }
+}
+
+/* ----- QR code (points to this site's root) ----- */
+function buildQR() {
+  const el = document.getElementById("qrcode");
+  if (!el || typeof QRCode === "undefined") return;
+  const url = window.location.origin + window.location.pathname.replace(/index\.html$/, "");
+  const qr = new QRCode(el, {
+    text: url,
+    width: 190,
+    height: 190,
+    colorDark: "#0c0a09",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.M,
+  });
+
+  document.getElementById("qr-download").addEventListener("click", () => {
+    const img = el.querySelector("img") || el.querySelector("canvas");
+    if (!img) return;
+    const src = img.tagName === "IMG" ? img.src : img.toDataURL("image/png");
+    const a = document.createElement("a");
+    a.href = src;
+    a.download = "louigene-qr.png";
+    a.click();
+  });
+}
+
+/* ----- Init ----- */
+document.addEventListener("DOMContentLoaded", () => {
+  buildSocials();
+  buildSpotify();
+  buildQR();
+  document.getElementById("year").textContent = new Date().getFullYear();
+});
