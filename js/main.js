@@ -9,15 +9,15 @@
 const CONFIG = {
   // --- Streaming ---
   appleMusic: "https://music.apple.com/us/artist/louigene/1773989164",
-  spotifyArtist: "",   // e.g. "https://open.spotify.com/artist/XXXXXXXX"
+  spotifyArtist: "https://open.spotify.com/artist/3E8BM0SlLwXmY3JNFhoUsU",
   // For the embedded Spotify player, paste your artist embed id (the part
   // after /artist/). Leave "" to hide the Spotify player entirely.
-  spotifyEmbedId: "",  // e.g. "3TVXtAsR1Inumwj472S9r4"
+  spotifyEmbedId: "3E8BM0SlLwXmY3JNFhoUsU",
 
   // --- Social ---
-  instagram: "https://instagram.com/",   // 👈 paste your @handle URL
-  youtube:   "",                          // e.g. "https://youtube.com/@louigene"
-  tiktok:    "",                          // e.g. "https://tiktok.com/@louigene"
+  instagram: "https://www.instagram.com/drlouigene/",
+  youtube:   "https://www.youtube.com/channel/UCL4fT0_eBY19Cy190RpmRvA",
+  tiktok:    "https://www.tiktok.com/@paullouigene",
 };
 
 /* ------------------------------------------------------------
