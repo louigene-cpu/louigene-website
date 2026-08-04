@@ -34,7 +34,7 @@ const ICONS = {
 
 /* ----- Build social buttons ----- */
 const SOCIAL_ORDER = [
-  { key: "instagram",  label: "Instagram",   sub: "Follow @louigene." },
+  { key: "instagram",  label: "Instagram",   sub: "Follow @drlouigene" },
   { key: "spotify",    label: "Spotify",     sub: "Stream & save",     url: "spotifyArtist" },
   { key: "appleMusic", label: "Apple Music", sub: "Full catalog",      url: "appleMusic" },
   { key: "youtube",    label: "YouTube",     sub: "Watch & subscribe" },
