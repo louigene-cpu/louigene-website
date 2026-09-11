@@ -46,9 +46,10 @@
         <h1 class="hero__name">louigene<span>.</span></h1>
         <p class="hero__tag">Love speaks quietly.<br />Raw notes, open hearts — my truth, unarmed.</p>
         <div class="hero__cta">
-          <a href="#music" class="btn">Stream the music</a>
+          <a href="#music" class="btn btn--play"><span class="btn__ico" aria-hidden="true">&#9654;</span> Play latest single</a>
           <a href="#connect" class="btn btn--ghost">Follow</a>
         </div>
+        <p class="hero__nowplaying">New: &ldquo;i remember who you&rsquo;ll be&rdquo;</p>
       </div>
       <div class="hero__art">
         <img src="assets/louigene-cover-full.png" alt="louigene. — album artwork" />
@@ -65,13 +66,15 @@
       <p class="section__sub">Press play — every track streams right here, straight from Apple Music.</p>
     </div>
 
+    <!-- Featured: latest release -->
+    <div class="track track--featured">
+      <span class="track__badge">Latest release</span>
+      <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="175" loading="lazy"
+        style="width:100%;overflow:hidden;border-radius:14px;"
+        src="https://embed.music.apple.com/us/album/i-remember-who-youll-be/6782521130?i=6782521132&theme=dark"></iframe>
+    </div>
+
     <div class="tracks">
-      <!-- i remember who you'll be -->
-      <div class="track">
-        <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="175" loading="lazy"
-          style="width:100%;overflow:hidden;border-radius:14px;"
-          src="https://embed.music.apple.com/us/album/i-remember-who-youll-be/6782521130?i=6782521132&theme=dark"></iframe>
-      </div>
       <!-- Hello -->
       <div class="track">
         <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="175" loading="lazy"
@@ -132,6 +135,22 @@
         <p>He's living proof you don't have to choose which version of yourself to become. Doctor and artist, science and feeling — he keeps them both. And if his songs leave you with one thing, let it be this: whatever you're carrying, you're allowed to set it down here.</p>
         <p class="about__signature">— louigene.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- ================= SIGNUP ================= -->
+  <section class="signup-band" id="signup">
+    <div class="signup-inner">
+      <p class="eyebrow">Don&rsquo;t miss a drop</p>
+      <h2 class="section__title">Be first to hear the next one</h2>
+      <p class="section__sub">New singles, quietly, before anyone else. No spam — just the music.</p>
+      <form name="fanlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="signup-form" id="signup-form">
+        <input type="hidden" name="form-name" value="fanlist" />
+        <p class="signup-hp"><label>Leave this empty: <input name="bot-field" /></label></p>
+        <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address" />
+        <button type="submit" class="btn">Notify me</button>
+      </form>
+      <p class="signup-msg" id="signup-msg" role="status" hidden>You&rsquo;re on the list. Talk soon. &#9829;</p>
     </div>
   </section>
 

@@ -96,10 +96,41 @@ function buildQR() {
   });
 }
 
+/* ----- Scroll reveal ----- */
+function buildReveals() {
+  const targets = document.querySelectorAll(
+    ".hero__text > *, .hero__art, .section__head, .track, .track--featured, .about__img, .about__text, .signup-inner, .connect > *"
+  );
+  if (!("IntersectionObserver" in window)) return;
+  targets.forEach((el) => el.classList.add("reveal"));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+  targets.forEach((el) => io.observe(el));
+}
+
+/* ----- Email signup (Netlify Forms, AJAX for inline success) ----- */
+function buildSignup() {
+  const form = document.getElementById("signup-form");
+  const msg = document.getElementById("signup-msg");
+  if (!form) return;
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = new URLSearchParams(new FormData(form)).toString();
+    fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: data })
+      .then(() => { form.hidden = true; if (msg) msg.hidden = false; })
+      .catch(() => { form.submit(); });
+  });
+}
+
 /* ----- Init ----- */
 document.addEventListener("DOMContentLoaded", () => {
   buildSocials();
   buildSpotify();
   buildQR();
+  buildReveals();
+  buildSignup();
   document.getElementById("year").textContent = new Date().getFullYear();
 });
