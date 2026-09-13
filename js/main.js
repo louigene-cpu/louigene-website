@@ -125,6 +125,39 @@ function buildSignup() {
   });
 }
 
+/* ----- Hero parallax (scroll depth + subtle mouse drift) ----- */
+function buildHeroMotion() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const hero = document.querySelector(".hero");
+  const media = document.querySelector(".hero__media");
+  const inner = document.querySelector(".hero__inner");
+  if (!hero || !media) return;
+  let mx = 0, my = 0, py = 0, ticking = false;
+  const touch = window.matchMedia("(hover: none)").matches;
+
+  function apply() {
+    media.style.transform = `translate3d(${mx * 6}px, ${py * 0.18 + my * 6}px, 0)`;
+    if (inner) {
+      inner.style.transform = `translate3d(0, ${py * 0.05}px, 0)`;
+      inner.style.opacity = Math.max(0, 1 - py / 700).toFixed(3);
+    }
+    ticking = false;
+  }
+  function schedule() { if (!ticking) { requestAnimationFrame(apply); ticking = true; } }
+
+  window.addEventListener("scroll", () => { py = window.scrollY; schedule(); }, { passive: true });
+  if (!touch) {
+    hero.addEventListener("mousemove", (e) => {
+      const r = hero.getBoundingClientRect();
+      mx = -((e.clientX - r.left) / r.width - 0.5);
+      my = -((e.clientY - r.top) / r.height - 0.5);
+      schedule();
+    });
+    hero.addEventListener("mouseleave", () => { mx = 0; my = 0; schedule(); });
+  }
+  apply();
+}
+
 /* ----- Init ----- */
 document.addEventListener("DOMContentLoaded", () => {
   buildSocials();
@@ -132,5 +165,6 @@ document.addEventListener("DOMContentLoaded", () => {
   buildQR();
   buildReveals();
   buildSignup();
+  buildHeroMotion();
   document.getElementById("year").textContent = new Date().getFullYear();
 });
