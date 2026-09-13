@@ -99,7 +99,7 @@ function buildQR() {
 /* ----- Scroll reveal ----- */
 function buildReveals() {
   const targets = document.querySelectorAll(
-    ".hero__text > *, .hero__art, .section__head, .track, .track--featured, .about__img, .about__text, .signup-inner, .connect > *"
+    ".hero__text > *, .section__head, .track, .track--featured, .about__img, .about__text, .gallery__item, .signup-inner, .connect > *"
   );
   if (!("IntersectionObserver" in window)) return;
   targets.forEach((el) => el.classList.add("reveal"));
@@ -158,6 +158,42 @@ function buildHeroMotion() {
   apply();
 }
 
+/* ----- Gallery lightbox ----- */
+function buildGallery() {
+  const grid = document.getElementById("gallery-grid");
+  const lb = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lightbox-img");
+  if (!grid || !lb || !lbImg) return;
+  const btns = [...grid.querySelectorAll(".gallery__item")];
+  const imgs = btns.map((b) => b.querySelector("img"));
+  let idx = 0;
+
+  function open(i) {
+    idx = (i + imgs.length) % imgs.length;
+    lbImg.src = imgs[idx].src;
+    lb.classList.add("is-open");
+    lb.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+  function close() {
+    lb.classList.remove("is-open");
+    lb.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  btns.forEach((b, i) => b.addEventListener("click", () => open(i)));
+  document.getElementById("lightbox-close").addEventListener("click", close);
+  document.getElementById("lightbox-prev").addEventListener("click", (e) => { e.stopPropagation(); open(idx - 1); });
+  document.getElementById("lightbox-next").addEventListener("click", (e) => { e.stopPropagation(); open(idx + 1); });
+  lb.addEventListener("click", (e) => { if (e.target === lb) close(); });
+  document.addEventListener("keydown", (e) => {
+    if (!lb.classList.contains("is-open")) return;
+    if (e.key === "Escape") close();
+    else if (e.key === "ArrowRight") open(idx + 1);
+    else if (e.key === "ArrowLeft") open(idx - 1);
+  });
+}
+
 /* ----- Init ----- */
 document.addEventListener("DOMContentLoaded", () => {
   buildSocials();
@@ -166,5 +202,6 @@ document.addEventListener("DOMContentLoaded", () => {
   buildReveals();
   buildSignup();
   buildHeroMotion();
+  buildGallery();
   document.getElementById("year").textContent = new Date().getFullYear();
 });

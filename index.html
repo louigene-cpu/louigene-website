@@ -31,6 +31,7 @@
     <nav class="nav__links">
       <a href="#music">Music</a>
       <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
       <a href="#connect">Connect</a>
       <a href="#music" class="btn btn--sm">Listen</a>
     </nav>
@@ -133,9 +134,32 @@
         <h2 class="section__title">The story so far</h2>
         <p>louigene. is a singer-songwriter and a physician. By day he practices physical medicine and rehabilitation, helping people rebuild their bodies after injury and illness. By night he writes songs that mend something quieter — the parts of the heart no scan can find. To him, it's the same work: restoration.</p>
         <p>His music is love with its guard down. Songs like "Heaven," "Golden," and "i remember who you'll be" are built on raw notes and open hearts, melodies left partly unwritten so you can hear yourself in the spaces between. He says the things most of us swallow — not to make a show of being vulnerable, but to prove you can feel it all and still stand.</p>
+        <p>And it lands in real rooms, not just headphones. louigene. has taken the stage for the Lexington Legends, aboard the USS Intrepid in New York Harbor, and at MetLife Stadium — proof that quiet, honest music can fill the biggest rooms there are.</p>
         <p>He's living proof you don't have to choose which version of yourself to become. Doctor and artist, science and feeling — he keeps them both. And if his songs leave you with one thing, let it be this: whatever you're carrying, you're allowed to set it down here.</p>
         <p class="about__signature">— louigene.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- ================= GALLERY ================= -->
+  <section class="section section--gallery" id="gallery">
+    <div class="section__head">
+      <p class="eyebrow">Gallery</p>
+      <h2 class="section__title">In frame</h2>
+      <p class="section__sub">Moments from the road, the studio, and everywhere in between. Tap any photo to enlarge.</p>
+    </div>
+    <div class="gallery" id="gallery-grid">
+      <button class="gallery__item" type="button"><img src="assets/gallery/IMG_4192.jpg" alt="louigene." loading="lazy" /></button>
+      <button class="gallery__item" type="button"><img src="assets/gallery/IMG_4221.jpg" alt="louigene." loading="lazy" /></button>
+      <button class="gallery__item" type="button"><img src="assets/gallery/IMG_0879.jpg" alt="louigene." loading="lazy" /></button>
+      <button class="gallery__item" type="button"><img src="assets/gallery/IMG_3840.jpg" alt="louigene." loading="lazy" /></button>
+      <button class="gallery__item" type="button"><img src="assets/gallery/IMG_3890.jpg" alt="louigene." loading="lazy" /></button>
+      <button class="gallery__item" type="button"><img src="assets/gallery/IMG_3870.jpg" alt="louigene." loading="lazy" /></button>
+      <button class="gallery__item" type="button"><img src="assets/gallery/IMG_4118.jpg" alt="louigene." loading="lazy" /></button>
+      <button class="gallery__item" type="button"><img src="assets/gallery/IMG_3844.jpg" alt="louigene." loading="lazy" /></button>
+      <button class="gallery__item" type="button"><img src="assets/gallery/IMG_4135.jpg" alt="louigene." loading="lazy" /></button>
+      <button class="gallery__item" type="button"><img src="assets/gallery/IMG_2426.jpg" alt="louigene." loading="lazy" /></button>
+      <button class="gallery__item" type="button"><img src="assets/gallery/IMG_3815.jpg" alt="louigene." loading="lazy" /></button>
     </div>
   </section>
 
@@ -185,6 +209,14 @@
   </footer>
 
   <div class="grain" aria-hidden="true"></div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Photo viewer">
+    <button class="lightbox__btn lightbox__close" id="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox__btn lightbox__prev" id="lightbox-prev" aria-label="Previous">&#8249;</button>
+    <img class="lightbox__img" id="lightbox-img" alt="louigene." />
+    <button class="lightbox__btn lightbox__next" id="lightbox-next" aria-label="Next">&#8250;</button>
+  </div>
 
   <!-- QR library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
