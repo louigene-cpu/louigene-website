@@ -209,8 +209,30 @@ document.addEventListener("DOMContentLoaded", () => {
   buildOutboundUTM();
   buildCookie();
   buildPreloader();
+  buildInterstitials();
   document.getElementById("year").textContent = new Date().getFullYear();
 });
+
+/* ----- Interstitial apparitions: gentle scroll drift ----- */
+function buildInterstitials() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const items = [...document.querySelectorAll(".interstitial")];
+  if (!items.length) return;
+  let ticking = false;
+  function update() {
+    const vh = window.innerHeight;
+    items.forEach((it) => {
+      const r = it.getBoundingClientRect();
+      if (r.bottom < -40 || r.top > vh + 40) return;
+      const prog = (r.top + r.height / 2 - vh / 2) / vh; // ~-0.5..0.5
+      const img = it.querySelector(".interstitial__img");
+      if (img) img.style.transform = `scale(1.14) translateY(${(prog * -4).toFixed(2)}%)`;
+    });
+    ticking = false;
+  }
+  window.addEventListener("scroll", () => { if (!ticking) { requestAnimationFrame(update); ticking = true; } }, { passive: true });
+  update();
+}
 
 /* ============================================================
    UI ENHANCEMENTS
