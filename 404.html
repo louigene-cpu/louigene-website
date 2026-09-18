@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page not found — louigene.</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <script>
+    (function () { try { var t = localStorage.getItem('louigene-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {} })();
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .nf {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 1.4rem;
+      gap: 0.4rem;
+      position: relative;
+    }
+    .nf__mark { height: 84px; width: auto; margin-bottom: 1.6rem; filter: drop-shadow(0 8px 30px rgba(0,0,0,0.5)); }
+    :root[data-theme="light"] .nf__mark { filter: invert(1) brightness(0.35); }
+    .nf__code {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 300;
+      font-size: clamp(5rem, 22vw, 12rem);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+    }
+    .nf__code span { color: var(--gold); }
+    .nf__title { font-family: "Cormorant Garamond", serif; font-size: clamp(1.6rem, 5vw, 2.4rem); margin-top: 0.4rem; }
+    .nf__text { color: var(--muted); max-width: 42ch; margin: 0.8rem auto 2rem; }
+    .nf__actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  </style>
+</head>
+<body>
+  <div class="nf">
+    <img src="assets/louigene-logo.png" alt="louigene." class="nf__mark" />
+    <div class="nf__code">4<span>0</span>4</div>
+    <h1 class="nf__title">This track isn&rsquo;t in the setlist.</h1>
+    <p class="nf__text">The page you&rsquo;re looking for moved, changed, or never existed. Let&rsquo;s get you back to the music.</p>
+    <div class="nf__actions">
+      <a href="/" class="btn">Back home</a>
+      <a href="/#music" class="btn btn--ghost">Listen to the singles</a>
+    </div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+</body>
+</html>

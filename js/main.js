@@ -203,5 +203,119 @@ document.addEventListener("DOMContentLoaded", () => {
   buildSignup();
   buildHeroMotion();
   buildGallery();
+  buildThemeToggle();
+  buildMobileMenu();
+  buildScrollUI();
+  buildOutboundUTM();
+  buildCookie();
+  buildPreloader();
   document.getElementById("year").textContent = new Date().getFullYear();
 });
+
+/* ============================================================
+   UI ENHANCEMENTS
+   ============================================================ */
+
+/* ----- Theme toggle (dark default, remembered) ----- */
+function buildThemeToggle() {
+  const btn = document.getElementById("theme-toggle");
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    const cur = document.documentElement.getAttribute("data-theme");
+    const next = cur === "light" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", next);
+    try { localStorage.setItem("louigene-theme", next); } catch (e) {}
+  });
+}
+
+/* ----- Mobile menu ----- */
+function buildMobileMenu() {
+  const toggle = document.getElementById("nav-toggle");
+  const menu = document.getElementById("mobile-menu");
+  if (!toggle || !menu) return;
+
+  function setOpen(open) {
+    document.body.classList.toggle("menu-open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    document.body.style.overflow = open ? "hidden" : "";
+    if (open) {
+      menu.hidden = false;
+      requestAnimationFrame(() => menu.classList.add("is-open"));
+    } else {
+      menu.classList.remove("is-open");
+      setTimeout(() => { if (!document.body.classList.contains("menu-open")) menu.hidden = true; }, 300);
+    }
+  }
+  toggle.addEventListener("click", () => setOpen(!document.body.classList.contains("menu-open")));
+  menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && document.body.classList.contains("menu-open")) setOpen(false); });
+}
+
+/* ----- Scroll UI: progress bar, sticky-header state, back-to-top, contact fab ----- */
+function buildScrollUI() {
+  const bar = document.getElementById("scroll-progress");
+  const nav = document.querySelector(".nav");
+  const top = document.getElementById("fab-top");
+  const contact = document.getElementById("fab-contact");
+  let ticking = false;
+
+  function update() {
+    const st = window.scrollY;
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    if (bar) bar.style.width = (h > 0 ? (st / h) * 100 : 0) + "%";
+    if (nav) nav.classList.toggle("nav--scrolled", st > 10);
+    if (top) top.hidden = st < 600;
+    if (contact) {
+      const show = st > 300;
+      contact.style.opacity = show ? "1" : "0";
+      contact.style.pointerEvents = show ? "auto" : "none";
+    }
+    ticking = false;
+  }
+  window.addEventListener("scroll", () => { if (!ticking) { requestAnimationFrame(update); ticking = true; } }, { passive: true });
+  if (top) top.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  update();
+}
+
+/* ----- UTM on outbound links (helps track where fans come from) ----- */
+function buildOutboundUTM() {
+  const host = location.hostname;
+  const params = { utm_source: host || "louigene", utm_medium: "website", utm_campaign: "artist_site" };
+  document.querySelectorAll('a[href^="http"]').forEach((a) => {
+    let url;
+    try { url = new URL(a.href); } catch (e) { return; }
+    if (url.hostname === host) return; // internal only
+    Object.entries(params).forEach(([k, v]) => { if (!url.searchParams.has(k)) url.searchParams.set(k, v); });
+    a.href = url.toString();
+  });
+}
+
+/* ----- Cookie / storage notice ----- */
+function buildCookie() {
+  const el = document.getElementById("cookie");
+  const ok = document.getElementById("cookie-ok");
+  if (!el || !ok) return;
+  let seen = false;
+  try { seen = localStorage.getItem("louigene-cookie") === "1"; } catch (e) {}
+  if (seen) return;
+  setTimeout(() => { el.hidden = false; }, 1200);
+  ok.addEventListener("click", () => {
+    el.hidden = true;
+    try { localStorage.setItem("louigene-cookie", "1"); } catch (e) {}
+  });
+}
+
+/* ----- Preloader fade-out ----- */
+function buildPreloader() {
+  const el = document.getElementById("preloader");
+  if (!el) return;
+  const done = () => setTimeout(() => {
+    el.classList.add("is-done");
+    setTimeout(() => { el.style.display = "none"; }, 600);
+  }, 250);
+  if (document.readyState === "complete") done();
+  else window.addEventListener("load", done);
+  // Safety: never let the preloader trap the page
+  setTimeout(() => { el.classList.add("is-done"); setTimeout(() => (el.style.display = "none"), 600); }, 4000);
+}

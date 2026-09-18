@@ -20,9 +20,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
+  <!-- Set theme before paint to avoid a flash -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('louigene-theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Loading animation -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <img src="assets/louigene-logo.png" alt="" class="preloader__mark" />
+  </div>
 
   <!-- ================= NAV ================= -->
   <header class="nav" id="top">
@@ -32,13 +50,33 @@
       <a href="#music">Music</a>
       <a href="#about">About</a>
       <a href="#gallery">Gallery</a>
+      <a href="#faq">FAQ</a>
       <a href="#connect">Connect</a>
-      <a href="#music" class="btn btn--sm">Listen</a>
+      <button class="nav__theme" id="theme-toggle" type="button" aria-label="Switch theme">
+        <svg class="nav__theme-ico ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="nav__theme-ico ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <a href="#music" class="btn btn--sm nav__listen">Listen</a>
+      <button class="nav__toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
   </header>
 
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <nav class="mobile-menu__links">
+      <a href="#music">Music</a>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#faq">FAQ</a>
+      <a href="#connect">Connect</a>
+      <a href="#music" class="btn">Listen</a>
+    </nav>
+  </div>
+
   <!-- ================= HERO ================= -->
-  <section class="hero">
+  <section class="hero" id="main" tabindex="-1">
     <div class="hero__media" aria-hidden="true">
       <img src="assets/hero-4128.jpg" alt="" class="hero__photo" />
       <div class="hero__scrim"></div>
@@ -164,6 +202,33 @@
     </div>
   </section>
 
+  <!-- ================= FAQ ================= -->
+  <section class="section section--faq" id="faq">
+    <div class="section__head">
+      <p class="eyebrow">Questions</p>
+      <h2 class="section__title">Good to know</h2>
+      <p class="section__sub">The short answers. For anything else, reach out in the Connect section.</p>
+    </div>
+    <div class="faq">
+      <details class="faq__item">
+        <summary>Where can I stream louigene.?</summary>
+        <div class="faq__body"><p>Everywhere — Apple Music, Spotify, YouTube, and more. You can press play right here in the Music section, or open the full catalog from the streaming links.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary>How do I book louigene. for a show or event?</summary>
+        <div class="faq__body"><p>Reach out through any of the links in the Connect section — Instagram is the fastest way to get a message through. Tell me the date, the place, and the vibe.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary>Does louigene. perform live?</summary>
+        <div class="faq__body"><p>Yes. He's taken the stage for the Lexington Legends, aboard the USS Intrepid, and at MetLife Stadium, among others. Follow along to catch the next one.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary>How do I hear new music first?</summary>
+        <div class="faq__body"><p>Join the list below — new singles go out there quietly before anywhere else. No spam, just the music.</p></div>
+      </details>
+    </div>
+  </section>
+
   <!-- ================= SIGNUP ================= -->
   <section class="signup-band" id="signup">
     <div class="signup-inner">
@@ -206,8 +271,34 @@
   <!-- ================= FOOTER ================= -->
   <footer class="footer">
     <a href="#top" class="footer__logo">louigene<span>.</span></a>
-    <p class="footer__copy">&copy; <span id="year"></span> louigene. All rights reserved.</p>
+    <nav class="footer__nav" aria-label="Footer">
+      <a href="#music">Music</a>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#faq">FAQ</a>
+      <a href="#connect">Connect</a>
+    </nav>
+    <p class="footer__copy">&copy; <span id="year"></span> louigene. All rights reserved.<br />
+      <span class="footer__updated">Last updated <time id="last-updated" datetime="2026-09-17">September 17, 2026</time></span>
+    </p>
   </footer>
+
+  <!-- Floating actions -->
+  <a href="#connect" class="fab fab--contact" id="fab-contact" aria-label="Contact louigene.">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/><path d="m4 7 8 5 8-5" fill="none" stroke-width="1.6"/></svg>
+    <span class="fab__label">Get in touch</span>
+  </a>
+  <button class="fab fab--top" id="fab-top" type="button" aria-label="Back to top" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V6M6 12l6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <!-- Cookie banner -->
+  <div class="cookie" id="cookie" hidden role="dialog" aria-label="Cookie notice">
+    <p class="cookie__text">This site uses minimal local storage to remember your theme — no ads, no tracking cookies.</p>
+    <div class="cookie__actions">
+      <button class="btn btn--sm" id="cookie-ok" type="button">Got it</button>
+    </div>
+  </div>
 
   <div class="grain" aria-hidden="true"></div>
 
