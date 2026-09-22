@@ -772,7 +772,7 @@ body.menu-open .nav__toggle span:nth-child(3) { transform: translateY(-6px) rota
 /* ---------- Interstitials (hidden flame apparitions between sections) ---------- */
 .interstitial {
   position: relative;
-  height: clamp(300px, 48vh, 520px);
+  height: clamp(380px, 64vh, 720px);
   overflow: hidden;
 }
 .interstitial__img {
@@ -782,7 +782,7 @@ body.menu-open .nav__toggle span:nth-child(3) { transform: translateY(-6px) rota
   height: 100%;
   object-fit: cover;
   object-position: center 40%;
-  transform: scale(1.12);
+  transform: scale(1.04);
   filter: brightness(0.6) saturate(0.85) contrast(1.03);
   transition: filter 1.1s ease;
   will-change: transform;
@@ -829,5 +829,5 @@ body.menu-open .nav__toggle span:nth-child(3) { transform: translateY(-6px) rota
     radial-gradient(130% 100% at 50% 42%, transparent 42%, rgba(0,0,0,0.5) 100%);
 }
 @media (prefers-reduced-motion: reduce) {
-  .interstitial__img { transform: scale(1.06) !important; }
+  .interstitial__img { transform: scale(1.03) !important; }
 }

@@ -226,7 +226,7 @@ function buildInterstitials() {
       if (r.bottom < -40 || r.top > vh + 40) return;
       const prog = (r.top + r.height / 2 - vh / 2) / vh; // ~-0.5..0.5
       const img = it.querySelector(".interstitial__img");
-      if (img) img.style.transform = `scale(1.14) translateY(${(prog * -4).toFixed(2)}%)`;
+      if (img) img.style.transform = `scale(1.06) translateY(${(prog * -3).toFixed(2)}%)`;
     });
     ticking = false;
   }
