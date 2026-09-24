@@ -211,8 +211,30 @@ document.addEventListener("DOMContentLoaded", () => {
   buildPreloader();
   buildInterstitials();
   buildPlatformSwitch();
+  buildMarquee();
   document.getElementById("year").textContent = new Date().getFullYear();
 });
+
+/* ----- Song-title marquee: slides sideways as you scroll past it ----- */
+function buildMarquee() {
+  const sec = document.querySelector(".marquee");
+  const track = document.getElementById("marquee-track");
+  if (!sec || !track) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  let ticking = false;
+  function update() {
+    const r = sec.getBoundingClientRect();
+    const vh = window.innerHeight;
+    // 0 when the band enters at the bottom, 1 when it leaves at the top
+    const prog = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
+    const dist = Math.max(0, track.scrollWidth - sec.clientWidth);
+    track.style.transform = `translate3d(${(-prog * dist * 0.55).toFixed(1)}px, 0, 0)`;
+    ticking = false;
+  }
+  window.addEventListener("scroll", () => { if (!ticking) { requestAnimationFrame(update); ticking = true; } }, { passive: true });
+  window.addEventListener("resize", update);
+  update();
+}
 
 /* ----- Apple Music / Spotify switch (swaps every player, remembered) ----- */
 function buildPlatformSwitch() {
