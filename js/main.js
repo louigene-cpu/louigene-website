@@ -59,9 +59,9 @@ function buildSocials() {
 
 /* ----- Spotify player + catalog link ----- */
 function buildSpotify() {
-  if (CONFIG.spotifyEmbedId) {
-    const wrap = document.getElementById("spotify-wrap");
-    const frame = document.getElementById("spotify-embed");
+  const wrap = document.getElementById("spotify-wrap");
+  const frame = document.getElementById("spotify-embed");
+  if (CONFIG.spotifyEmbedId && wrap && frame) {
     frame.src = `https://open.spotify.com/embed/artist/${CONFIG.spotifyEmbedId}?utm_source=generator&theme=0`;
     wrap.hidden = false;
   }
@@ -210,8 +210,44 @@ document.addEventListener("DOMContentLoaded", () => {
   buildCookie();
   buildPreloader();
   buildInterstitials();
+  buildPlatformSwitch();
   document.getElementById("year").textContent = new Date().getFullYear();
 });
+
+/* ----- Apple Music / Spotify switch (swaps every player, remembered) ----- */
+function buildPlatformSwitch() {
+  const btns = [...document.querySelectorAll(".platform-switch__btn")];
+  const tracks = [...document.querySelectorAll(".track[data-apple]")];
+  if (!btns.length || !tracks.length) return;
+
+  function embedFor(t, platform) {
+    if (platform === "spotify" && t.dataset.spotify) {
+      return { src: `https://open.spotify.com/embed/track/${t.dataset.spotify}?utm_source=generator&theme=0`, h: 152 };
+    }
+    const p = t.dataset.apple;
+    return { src: `https://embed.music.apple.com/us/${p}${p.includes("?") ? "&" : "?"}theme=dark`, h: 175 };
+  }
+
+  function setPlatform(platform, save) {
+    tracks.forEach((t) => {
+      const f = t.querySelector("iframe");
+      const e = embedFor(t, platform);
+      if (f && f.src !== e.src) { f.src = e.src; f.height = e.h; }
+      t.classList.toggle("track--apple-only", platform === "spotify" && !t.dataset.spotify);
+    });
+    btns.forEach((b) => {
+      const on = b.dataset.platform === platform;
+      b.classList.toggle("is-active", on);
+      b.setAttribute("aria-checked", on ? "true" : "false");
+    });
+    if (save) { try { localStorage.setItem("louigene-platform", platform); } catch (e) {} }
+  }
+
+  btns.forEach((b) => b.addEventListener("click", () => setPlatform(b.dataset.platform, true)));
+  let saved = null;
+  try { saved = localStorage.getItem("louigene-platform"); } catch (e) {}
+  if (saved === "spotify") setPlatform("spotify", false);
+}
 
 /* ----- Interstitial apparitions: gentle scroll drift ----- */
 function buildInterstitials() {

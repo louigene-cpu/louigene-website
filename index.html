@@ -92,7 +92,7 @@
           <a href="#music" class="btn btn--play"><span class="btn__ico" aria-hidden="true">&#9654;</span> Play latest single</a>
           <a href="#connect" class="btn btn--ghost">Follow</a>
         </div>
-        <p class="hero__nowplaying">New: &ldquo;Tenessee Whiskey (Cover)&rdquo;</p>
+        <p class="hero__nowplaying">New: &ldquo;Tennessee Whiskey (Cover)&rdquo; &middot; <a href="https://music.apple.com/us/album/tennessee-whiskey-cover/6815294623?i=6815294628" target="_blank" rel="noopener">Apple Music</a> &middot; <a href="https://open.spotify.com/track/0B4vV4inLMfKKDueTuGIcU" target="_blank" rel="noopener">Spotify</a></p>
       </div>
     </div>
     <a href="#music" class="scroll-hint" aria-label="Scroll to music">↓</a>
@@ -100,71 +100,73 @@
 
   <!-- ================= MUSIC ================= -->
   <section class="section" id="music">
-    <div class="section__head">
-      <p class="eyebrow">The Catalog</p>
-      <h2 class="section__title">Singles</h2>
-      <p class="section__sub">Press play — every track streams right here, straight from Apple Music.</p>
+    <div class="section__head music__head">
+      <div>
+        <p class="eyebrow">The Catalog</p>
+        <h2 class="section__title">Singles</h2>
+        <p class="section__sub">Press play right here &mdash; on whichever app you use.</p>
+      </div>
+      <div class="platform-switch" role="radiogroup" aria-label="Choose your streaming app">
+        <button type="button" class="platform-switch__btn is-active" data-platform="apple" role="radio" aria-checked="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.2 3.2 8.9 4.9c-.5.1-.8.5-.8 1v9.4a3 3 0 1 0 1.5 2.6V8.3l6.9-1.4v6.2a3 3 0 1 0 1.5 2.6V4.2c0-.7-.6-1.2-1.3-1z"/></svg><span>Apple Music</span></button>
+        <button type="button" class="platform-switch__btn" data-platform="spotify" role="radio" aria-checked="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.59 14.44a.62.62 0 0 1-.86.21c-2.35-1.44-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.82-.87 7.1-.5 9.72 1.1.3.18.4.57.21.87zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.5c3.63-1.1 8.15-.56 11.24 1.34.37.23.49.71.25 1.07zm.11-2.84C14.8 8.96 9.34 8.78 6.26 9.71a.94.94 0 1 1-.54-1.8c3.54-1.07 9.57-.86 13.34 1.38a.94.94 0 0 1-.96 1.61z"/></svg><span>Spotify</span></button>
+      </div>
     </div>
 
     <!-- Featured: latest release -->
-    <div class="track track--featured">
-      <span class="track__badge">Latest release</span>
-      <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="175" loading="lazy"
+    <div class="track track--featured" data-apple="album/tennessee-whiskey-cover/6815294623?i=6815294628" data-spotify="0B4vV4inLMfKKDueTuGIcU">
+      <span class="track__badge">New single</span>
+      <iframe title="Tennessee Whiskey (Cover)" allow="autoplay *; clipboard-write; encrypted-media *; fullscreen; picture-in-picture" frameborder="0" height="175" loading="lazy"
         style="width:100%;overflow:hidden;border-radius:14px;"
-        src="https://embed.music.apple.com/us/album/tenessee-whiskey-cover/6815092187?i=6815092188&theme=dark"></iframe>
+        src="https://embed.music.apple.com/us/album/tennessee-whiskey-cover/6815294623?i=6815294628&theme=dark"></iframe>
+      <div class="stream-row">
+        <a class="stream-btn stream-btn--apple" href="https://music.apple.com/us/album/tennessee-whiskey-cover/6815294623?i=6815294628" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.2 3.2 8.9 4.9c-.5.1-.8.5-.8 1v9.4a3 3 0 1 0 1.5 2.6V8.3l6.9-1.4v6.2a3 3 0 1 0 1.5 2.6V4.2c0-.7-.6-1.2-1.3-1z"/></svg><span>Listen on Apple Music</span></a>
+        <a class="stream-btn stream-btn--spotify" href="https://open.spotify.com/track/0B4vV4inLMfKKDueTuGIcU" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.59 14.44a.62.62 0 0 1-.86.21c-2.35-1.44-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.82-.87 7.1-.5 9.72 1.1.3.18.4.57.21.87zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.5c3.63-1.1 8.15-.56 11.24 1.34.37.23.49.71.25 1.07zm.11-2.84C14.8 8.96 9.34 8.78 6.26 9.71a.94.94 0 1 1-.54-1.8c3.54-1.07 9.57-.86 13.34 1.38a.94.94 0 0 1-.96 1.61z"/></svg><span>Listen on Spotify</span></a>
+      </div>
     </div>
 
     <div class="tracks">
       <!-- i remember who you'll be -->
-      <div class="track">
-        <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="175" loading="lazy"
+      <div class="track" data-apple="album/i-remember-who-youll-be/6782521130?i=6782521132" data-spotify="45iGsAY9OETTozGizq0U7e">
+        <iframe title="i remember who you'll be" allow="autoplay *; clipboard-write; encrypted-media *; fullscreen; picture-in-picture" frameborder="0" height="175" loading="lazy"
           style="width:100%;overflow:hidden;border-radius:14px;"
           src="https://embed.music.apple.com/us/album/i-remember-who-youll-be/6782521130?i=6782521132&theme=dark"></iframe>
       </div>
       <!-- Hello -->
-      <div class="track">
-        <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="175" loading="lazy"
+      <div class="track" data-apple="album/hello/1892582922?i=1892582923" data-spotify="3P4hmMUhYCH0c27Ikul8NU">
+        <iframe title="Hello" allow="autoplay *; clipboard-write; encrypted-media *; fullscreen; picture-in-picture" frameborder="0" height="175" loading="lazy"
           style="width:100%;overflow:hidden;border-radius:14px;"
           src="https://embed.music.apple.com/us/album/hello/1892582922?i=1892582923&theme=dark"></iframe>
       </div>
       <!-- Knew Me -->
-      <div class="track">
-        <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="175" loading="lazy"
+      <div class="track" data-apple="song/knew-me/1839347296" data-spotify="5vLsctFb7YcMdWLn2w1AEw">
+        <iframe title="Knew Me" allow="autoplay *; clipboard-write; encrypted-media *; fullscreen; picture-in-picture" frameborder="0" height="175" loading="lazy"
           style="width:100%;overflow:hidden;border-radius:14px;"
           src="https://embed.music.apple.com/us/song/knew-me/1839347296?theme=dark"></iframe>
       </div>
       <!-- Golden -->
-      <div class="track">
-        <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="175" loading="lazy"
+      <div class="track" data-apple="song/golden/1826760923" data-spotify="1icJ9lVrKdovPYy7jFOmDX">
+        <iframe title="Golden" allow="autoplay *; clipboard-write; encrypted-media *; fullscreen; picture-in-picture" frameborder="0" height="175" loading="lazy"
           style="width:100%;overflow:hidden;border-radius:14px;"
           src="https://embed.music.apple.com/us/song/golden/1826760923?theme=dark"></iframe>
       </div>
       <!-- Build My Life (feat. louigene.) -->
-      <div class="track">
-        <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="175" loading="lazy"
+      <div class="track" data-apple="album/build-my-life-feat-louigene/1817637064?i=1817637258">
+        <iframe title="Build My Life (feat. louigene.)" allow="autoplay *; clipboard-write; encrypted-media *; fullscreen; picture-in-picture" frameborder="0" height="175" loading="lazy"
           style="width:100%;overflow:hidden;border-radius:14px;"
           src="https://embed.music.apple.com/us/album/build-my-life-feat-louigene/1817637064?i=1817637258&theme=dark"></iframe>
       </div>
       <!-- Heaven -->
-      <div class="track">
-        <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="175" loading="lazy"
+      <div class="track" data-apple="song/heaven/1792817733" data-spotify="0Mi3baqm8LUEVe8MZFd0SU">
+        <iframe title="Heaven" allow="autoplay *; clipboard-write; encrypted-media *; fullscreen; picture-in-picture" frameborder="0" height="175" loading="lazy"
           style="width:100%;overflow:hidden;border-radius:14px;"
           src="https://embed.music.apple.com/us/song/heaven/1792817733?theme=dark"></iframe>
       </div>
       <!-- little bit difficult -->
-      <div class="track">
-        <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="175" loading="lazy"
+      <div class="track" data-apple="song/little-bit-difficult-radio-edit/1773989165" data-spotify="6yYcrj6wSaaYSrfbc8juVW">
+        <iframe title="little bit difficult" allow="autoplay *; clipboard-write; encrypted-media *; fullscreen; picture-in-picture" frameborder="0" height="175" loading="lazy"
           style="width:100%;overflow:hidden;border-radius:14px;"
           src="https://embed.music.apple.com/us/song/little-bit-difficult-radio-edit/1773989165?theme=dark"></iframe>
       </div>
-    </div>
-
-    <!-- Spotify — swap the src once you have your Spotify artist link (see README) -->
-    <div class="spotify-wrap" id="spotify-wrap" hidden>
-      <h3 class="spotify-title">On Spotify</h3>
-      <iframe id="spotify-embed" style="border-radius:14px" src="" width="100%" height="352"
-        frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"></iframe>
     </div>
 
     <div class="platform-row">
