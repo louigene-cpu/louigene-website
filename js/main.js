@@ -368,13 +368,26 @@ function buildCookie() {
 /* ----- Preloader fade-out ----- */
 function buildPreloader() {
   const el = document.getElementById("preloader");
-  if (!el) return;
-  const done = () => setTimeout(() => {
-    el.classList.add("is-done");
-    setTimeout(() => { el.style.display = "none"; }, 600);
-  }, 250);
-  if (document.readyState === "complete") done();
-  else window.addEventListener("load", done);
+  const hero = document.querySelector(".hero");
+  const photo = document.querySelector(".hero__photo");
+  let finished = false;
+  // Lift the preloader as soon as the hero photo is ready (not every embed), then play the reveal
+  const done = () => {
+    if (finished) return;
+    finished = true;
+    setTimeout(() => {
+      if (el) {
+        el.classList.add("is-done");
+        setTimeout(() => { el.style.display = "none"; }, 600);
+      }
+      if (hero) requestAnimationFrame(() => hero.classList.add("is-revealed"));
+    }, 250);
+  };
+  if (photo && !photo.complete) {
+    photo.addEventListener("load", done, { once: true });
+    photo.addEventListener("error", done, { once: true });
+  } else done();
+  window.addEventListener("load", done, { once: true });
   // Safety: never let the preloader trap the page
-  setTimeout(() => { el.classList.add("is-done"); setTimeout(() => (el.style.display = "none"), 600); }, 4000);
+  setTimeout(done, 4000);
 }

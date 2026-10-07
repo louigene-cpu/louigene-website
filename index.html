@@ -30,6 +30,7 @@
     })();
   </script>
 
+  <link rel="preload" as="image" type="image/avif" imagesrcset="assets/hero-960.avif 960w, assets/hero-1600.avif 1600w, assets/hero-2560.avif 2560w" imagesizes="(orientation: portrait) 78vh, 108vw" fetchpriority="high" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -78,7 +79,11 @@
   <!-- ================= HERO ================= -->
   <section class="hero" id="main" tabindex="-1">
     <div class="hero__media" aria-hidden="true">
-      <img src="assets/hero-4128.jpg" alt="" class="hero__photo" />
+      <picture class="hero__reveal">
+        <source type="image/avif" srcset="assets/hero-960.avif 960w, assets/hero-1600.avif 1600w, assets/hero-2560.avif 2560w" sizes="(orientation: portrait) 78vh, 108vw" />
+        <source type="image/webp" srcset="assets/hero-960.webp 960w, assets/hero-1600.webp 1600w, assets/hero-2560.webp 2560w" sizes="(orientation: portrait) 78vh, 108vw" />
+        <img src="assets/hero-1600.jpg" srcset="assets/hero-960.jpg 960w, assets/hero-1600.jpg 1600w, assets/hero-2560.jpg 2560w" sizes="(orientation: portrait) 78vh, 108vw" width="2560" height="3840" alt="" class="hero__photo" fetchpriority="high" decoding="async" />
+      </picture>
       <div class="hero__scrim"></div>
       <div class="hero__glow"></div>
     </div>
